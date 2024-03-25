@@ -347,28 +347,3 @@ predict(modelRF, testing[, -length(names(testing))])
     ##  [1] B A B A A E D B A A B C B A E E A B B B
     ## Levels: A B C D E
 
-Generating Files to submit as answers for the Assignment
---------------------------------------------------------
-
-Function to generate files with predictions to submit for assignment.
-
-``` r
-pml_write_files = function(x){
-  n = length(x)
-  for(i in 1:n){
-    filename = paste0("./Assignment_Solutions/problem_id_",i,".txt")
-    write.table(x[i], file = filename, quote = FALSE, row.names = FALSE, col.names = FALSE)
-  }
-}
-```
-
-Generating the Files.
-
-``` r
-pml_write_files(predict(modelRF, testing[, -length(names(testing))]))
-rm(modelRF)
-rm(training)
-rm(testing)
-rm(validation)
-rm(pml_write_files)
-```
